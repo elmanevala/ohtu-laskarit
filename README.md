@@ -1,0 +1,2 @@
+# ohtu-laskarit
+Ohjelmistotuotantokurssin laskarit.
