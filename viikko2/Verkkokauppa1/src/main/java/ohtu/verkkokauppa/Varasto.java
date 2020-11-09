@@ -1,15 +1,19 @@
 package ohtu.verkkokauppa;
 
 import java.util.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Varasto implements TuotteenKasittelija {
 
-    
+    @Autowired
     public LaskujenKasittelija kirjanpito;
     public HashMap<Tuote, Integer> saldot;  
     
-    public Varasto(LaskujenKasittelija kirjanpito) {
-        this.kirjanpito = kirjanpito;
+    @Autowired
+    public Varasto() {
         saldot = new HashMap<Tuote, Integer>();
         alustaTuotteet();
     }
