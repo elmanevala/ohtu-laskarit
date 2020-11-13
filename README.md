@@ -5,3 +5,4 @@
 
 [viikko1](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko1)  
 [viikko2](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko2)
+[viikko3](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko3)
