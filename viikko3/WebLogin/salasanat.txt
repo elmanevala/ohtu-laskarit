@@ -1,6 +1,0 @@
-elma;salasana1
-elma;salasana1
-salla;salasana123
-joona;salissalis1
-salla32171;salasana123
-salla8530;salasana123
