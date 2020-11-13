@@ -2,7 +2,10 @@ package ohtu;
 
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.logging.Logger;
 import org.apache.http.client.fluent.Request;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -15,6 +18,7 @@ public class Main {
 
         Gson mapper = new Gson();
         Player[] players = mapper.fromJson(bodyText, Player[].class);
+        Arrays.sort(players);
         
         System.out.println("Oliot:");
         for (Player player : players) {
@@ -23,6 +27,7 @@ public class Main {
             }
         }   
     }
-  
+    
+    
 }
 
