@@ -32,11 +32,11 @@ public class AuthenticationService {
         if (userDao.findByName(username) != null) {
             status.addError("username is already taken");
         }
+        
         if(invalid(username,password,passwordConfirmation)){
             System.out.println(this.error);
             status.addError(this.error);
         }
-
 
         if (status.isOk()) {
             userDao.add(new User(username, password));

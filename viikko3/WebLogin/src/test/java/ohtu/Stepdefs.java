@@ -85,12 +85,28 @@ public class Stepdefs {
     public void newUserIsCreated() {
         pageHasContent("Welcome to Ohtu Application!");
         pageHasContent("continue to application mainpage");
+        System.out.println(driver.getPageSource());
     }
     
     @Then("user is not created and error {string} is reported")
     public void newUserIsCreated(String error) {
         pageHasContent("Create username and give password");
         pageHasContent(error);
+    }
+    
+    @Given("user with username {string} with password {string} is successfully created")
+    public void newAccountIsCreated(String username, String password) {
+        newUserIsSelected();
+        signUpWith(username, password, password);
+        logOut();
+        loginIsSelected();
+    }
+    
+    @Given("user with username {string} and password {string} is tried to be created")
+    public void newAccountIsNotCreated(String username, String password) {
+        newUserIsSelected();
+        signUpWith(username, password, password);
+        returnToMain();
     }
     
     @After
@@ -124,5 +140,24 @@ public class Stepdefs {
         element.sendKeys(confirmation);
         element = driver.findElement(By.name("signup"));
         element.submit();  
+    }
+    private void logOut() {
+        assertTrue(driver.getPageSource().contains("Welcome to Ohtu Application!"));
+        WebElement element = driver.findElement(By.linkText("continue to application mainpage"));
+        element.click();
+        
+        element = driver.findElement(By.linkText("logout"));
+        element.click();    
+    }
+    
+    private void returnToMain(){
+        WebElement element = driver.findElement(By.linkText("back to home"));
+        element.click();
+    }
+    
+    private static void sleep(int n){
+        try{
+            Thread.sleep(n*1000);
+        } catch(Exception e){}
     }
 }
