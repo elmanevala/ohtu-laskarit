@@ -91,4 +91,63 @@ public class KauppaTest {
 
         verify(pankki).tilisiirto(eq("pekka"), anyInt(), eq("12345"), anyString(), eq(5));
     }
+    
+    @Test
+    public void asioinninAloittaminenNollaaOstokset() {
+
+        when(viite.uusi()).thenReturn(42);
+
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));  
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1);    
+        k.lisaaKoriin(1);
+        
+        when(varasto.saldo(2)).thenReturn(3);
+        when(varasto.haeTuote(2)).thenReturn(new Tuote(1, "joulukalenteri", 3));         
+        k.aloitaAsiointi();
+        k.lisaaKoriin(2);
+        k.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(eq("pekka"), anyInt(), eq("12345"), anyString(), eq(3));
+    }
+    
+    @Test
+    public void jokaiselleAsioinnilleUusiViite() {
+        when(viite.uusi())
+            .thenReturn(1)
+            .thenReturn(2);
+        
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));  
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1); 
+        k.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(eq("pekka"), eq(1), eq("12345"), anyString(), eq(5));
+        
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));  
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1); 
+        k.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(eq("pekka"), eq(2), eq("12345"), anyString(), eq(5));
+    }
+    
+        @Test
+    public void poistettuaTuotettaEiVeloiteta() {
+        when(viite.uusi()).thenReturn(42);
+        
+        when(varasto.saldo(1)).thenReturn(10);
+        when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));  
+        k.aloitaAsiointi();
+        k.lisaaKoriin(1); 
+        k.lisaaKoriin(1);
+        k.poistaKorista(1);
+        k.tilimaksu("pekka", "12345");
+        
+        verify(pankki).tilisiirto(eq("pekka"), anyInt(), eq("12345"), anyString(), eq(5));
+
+    }
 }
