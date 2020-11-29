@@ -14,12 +14,15 @@ import javafx.scene.control.TextField;
  */
 public class Nollaa extends Komento {
 
+    private String arvo;
+
     public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
     }
 
     @Override
     public void suorita() {
+        this.arvo = tuloskentta.getText();
         this.sovellus.nollaa();
 
         String tulos = String.valueOf(this.sovellus.tulos());
@@ -31,10 +34,15 @@ public class Nollaa extends Komento {
         } else {
             nollaa.disableProperty().set(false);
         }
+
+        undo.disableProperty().set(false);
+
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.tuloskentta.setText(this.arvo);
+        this.syotekentta.setText("");
+
     }
 }

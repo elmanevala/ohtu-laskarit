@@ -14,12 +14,16 @@ import javafx.scene.control.TextField;
  */
 public class Erotus extends Komento {
 
+    private String arvo;
+
     public Erotus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
     }
 
     @Override
     public void suorita() {
+        this.arvo = tuloskentta.getText();
+
         int vahennus = Integer.valueOf(syotekentta.getText());
         this.sovellus.miinus(vahennus);
 
@@ -32,10 +36,15 @@ public class Erotus extends Komento {
         } else {
             nollaa.disableProperty().set(false);
         }
+        undo.disableProperty().set(false);
+
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        undo.disableProperty().set(false);
+        this.tuloskentta.setText(this.arvo);
+        this.syotekentta.setText("");
+
     }
 }
