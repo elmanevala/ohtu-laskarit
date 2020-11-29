@@ -2,11 +2,6 @@
 
 [Ensimmäisen viikon tehtävät 2-13 ja toisen viikon tehtävät 2 ja 3](https://github.com/elmanevala/ohtu-2020-viikko1)
 
-muutos1
-muutos2
-muutos3
-
-muutos4
 [viikko1](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko1)  
 [viikko2](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko2)  
 [viikko3](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko3)  
