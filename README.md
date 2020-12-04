@@ -8,3 +8,6 @@
 [viikko4](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko4)  
 [viikko5](https://github.com/elmanevala/ohtu-laskarit/tree/main/viikko5)  
 	* [retrospektiivitekniikat](https://github.com/elmanevala/ohtu-laskarit/tree/main/retro.md)
+
+
+pian rebasean
