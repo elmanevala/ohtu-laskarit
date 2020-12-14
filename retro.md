@@ -1,4 +1,4 @@
-# Retrospektiivitekniikat
+# Retrospektiivitekniikkoja
 
 Retrospektiivi on jokaisen sprintin jälkeeen pidettävä tapaaminen, jossa tiimi keskustelee päättyneen sprintin toimintatavoista. Retrospektiivin tavoitteena on kehittää tiimin toimintaa seuraavaa sprinttiä varten. Jotta keskutelu etenisi mahdollisimman jouhevasti ja tapaaminen olisi hyödyllinen, on keksitty tekniikoita, jotka auttavat kehittäjiä löytämään keskusteluissaan parannusta kaipaavia toimintatapoja.  
 
